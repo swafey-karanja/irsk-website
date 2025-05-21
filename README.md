@@ -39,17 +39,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 my-event-site/
 ├── public/                  # Static assets (images, fonts, etc.)
 ├── src/
-│   ├── app/                 # App Router-based routing
-│   │   ├── layout.tsx       # Shared layout for all pages
-│   │   ├── page.tsx         # Landing page ("/")
-│   │   └── about/           # "About" or 2nd page ("/about")
-│   │       └── page.tsx
-│   ├── components/          # Reusable components (Header, Footer, etc.)
-│   ├── lib/                 # Utility functions (e.g. fetch helpers)
-│   ├── styles/              # Global and component styles
-│   └── types/               # TypeScript types/interfaces (optional)
-├── .env.local               # Environment variables
-├── next.config.js           # Next.js config
+│   ├── app/
+│   │   ├── layout.tsx       # Shared layout
+│   │   ├── page.tsx         # Landing page ("/") ← Display news here
+│   │   └── about/
+│   │       └── page.tsx     # Static about page
+│   ├── components/          # Reusable UI (e.g., NewsCard.tsx)
+│   ├── lib/                 # ✅ New: for data-fetching logic (e.g., API helpers)
+├── .env.local               # ✅ Store your API key here
+├── next.config.js
 ├── package.json
 └── tsconfig.json
+
 
