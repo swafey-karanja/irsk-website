@@ -5,7 +5,10 @@ const nextConfig: NextConfig = {
   images: {
     domains: [
       'images.unsplash.com',
-      'img.youtube.com'
+      'img.youtube.com',
+      'menafn.com',
+      'www.travelandtourworld.com',
+      'media.zenfs.com'
     ],
   },
 };
