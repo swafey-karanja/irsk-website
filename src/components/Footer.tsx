@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
               alt="Company Logo"
             />
 
-            <p className="text-base leading-relaxed text-black mt-7">
+            <p className="text-sm leading-relaxed text-black mt-7">
               The International Relations Society of Kenya (IRSK) is a
               professional body for the international affairs and diplomacy
               field in Kenya that serves as a forum for the exchange of ideas,
@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="#"
-                  className="flex text-base text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                  className="flex text-sm text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                 >
                   About
                 </a>
@@ -119,7 +119,7 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="#"
-                  className="flex text-base text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                  className="flex text-sm text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                 >
                   Features
                 </a>
@@ -127,7 +127,7 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="#"
-                  className="flex text-base text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                  className="flex text-sm text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                 >
                   Works
                 </a>
@@ -135,7 +135,7 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="#"
-                  className="flex text-base text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                  className="flex text-sm text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                 >
                   Career
                 </a>
@@ -153,7 +153,7 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="#"
-                  className="flex text-base font-sans text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                  className="flex text-sm font-sans text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                 >
                   Customer Support
                 </a>
@@ -161,7 +161,7 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="#"
-                  className="flex text-base font-sans text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                  className="flex text-sm font-sans text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                 >
                   Delivery Details
                 </a>
@@ -169,7 +169,7 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="#"
-                  className="flex text-base font-sans text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                  className="flex text-sm font-sans text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                 >
                   Terms & Conditions
                 </a>
@@ -177,7 +177,7 @@ const Footer: React.FC = () => {
               <li>
                 <a
                   href="#"
-                  className="flex text-base font-sans text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                  className="flex text-sm font-sans text-black transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
                 >
                   Privacy Policy
                 </a>

@@ -82,6 +82,17 @@ export default function Hero() {
                 className="group relative border-2 border-orange-400 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 hover:bg-orange-400 hover:text-white hover:scale-105 hover:shadow-lg hover:shadow-orange-400/25 focus:outline-none focus:ring-4 focus:ring-orange-400/50 focus:bg-orange-400 focus:text-white active:scale-95"
                 type="button"
                 aria-label="Learn more about International Relations Society of Kenya"
+                onClick={() => {
+                  const element = document.getElementById(
+                    "about-section"
+                  ) as HTMLElement | null;
+                  if (element) {
+                    element.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                  }
+                }}
               >
                 <span className="relative z-10">Learn More about IRSK</span>
 
