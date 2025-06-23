@@ -1,192 +1,179 @@
-/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
-import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { fetchNews } from "@/store/newsSlice";
+import React from "react";
+import Image from "next/image";
 
-export default function News() {
-  const dispatch = useAppDispatch();
-  const {
-    items: newsItems,
-    status,
-    error,
-  } = useAppSelector((state) => state.news);
+interface NewsItem {
+  id: string;
+  date: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  slug: string;
+}
 
-  const [isPageLoading, setIsPageLoading] = useState(true);
+interface NewsComponentProps {
+  newsItems?: NewsItem[];
+  onViewAll?: () => void;
+}
 
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchNews());
-    }
+const defaultNewsItems: NewsItem[] = [
+  {
+    id: "1",
+    date: "March 26, 2025",
+    title: "Community Safety Initiative Launches to Reduce Crime",
+    description:
+      "The police department has launched a new community safety initiative aimed at reducing crime through increased patrols and neighborhood collaboration.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1726762524157-4625a4b394a8?q=80&w=1474&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    slug: "community-safety-initiative",
+  },
+  {
+    id: "2",
+    date: "March 26, 2025",
+    title: "New Emergency Response System Improves 911 Call",
+    description:
+      "The new system allows for faster dispatching, better tracking of emergencies, and real-time communication with first responders.",
+    imageUrl:
+      "https://plus.unsplash.com/premium_photo-1669244777314-682992ab3619?q=80&w=1615&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    slug: "emergency-response-system",
+  },
+  {
+    id: "3",
+    date: "March 26, 2025",
+    title: "New Emergency Response System Improves 911 Call",
+    description:
+      "The new system allows for faster dispatching, better tracking of emergencies, and real-time communication with first responders.",
+    imageUrl:
+      "https://images.unsplash.com/photo-1649949480665-a2ba4b37ed5b?q=80&w=1509&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    slug: "emergency-response-system",
+  },
+  // {
+  //   id: "4",
+  //   date: "March 26, 2025",
+  //   title: "New Emergency Response System Improves 911 Call",
+  //   description:
+  //     "The new system allows for faster dispatching, better tracking of emergencies, and real-time communication with first responders.",
+  //   imageUrl:
+  //     "https://unsplash.com/photos/a-close-up-of-a-world-map-on-a-blue-background-rBAAz3ReUuo",
+  //   slug: "emergency-response-system",
+  // },
+];
 
-    const timer = setTimeout(() => {
-      setIsPageLoading(false);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [dispatch, status]);
-
-  if (status === "failed") {
-    console.log(error, "error fetching news");
-  }
-
+const NewsComponent: React.FC<NewsComponentProps> = ({
+  newsItems = defaultNewsItems,
+  onViewAll,
+}) => {
   return (
-    <div className="container mx-auto px-4 py-2 max-w-[1380px]">
-      <div className="text-center mb-10">
-        <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600 mb-4">
-          Latest Content
-        </h2>
-        <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
-      </div>
+    <div className="w-full py-16 px-4">
+      <div className="mx-auto max-w-7xl">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <header className="text-center mb-8 lg:mb-12">
+            <h2
+              id="video-section-title"
+              className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600/80 mb-4"
+            >
+              Latest News & Updates
+            </h2>
+            <div className="w-20 h-1 bg-blue-600/80 mx-auto rounded-full"></div>
+          </header>
+          <button
+            onClick={onViewAll}
+            className="inline-flex items-center px-8 py-3 transition-all duration-300 bg-orange-400 border-orange-400 hover:bg-orange-500 hover:text-white hover:shadow-orange-400/25 focus:outline-none focus:ring-4 focus:ring-orange-400/50 focus:bg-orange-400 focus:text-white active:scale-95 text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 backdrop-blur-sm"
+          >
+            View All Updates
+          </button>
+        </div>
 
-      {(isPageLoading || status === "loading") && (
-        <div className="container mx-auto px-4 py-8 max-w-[1380px]">
-          <div className="flex flex-col lg:flex-row gap-6">
-            <div className="lg:w-2/3">
-              <div className="bg-white rounded-lg animate-pulse">
-                <div className="h-64 md:h-150 w-full bg-gray-300 rounded-t-lg"></div>
-                <div className="px-1 py-6">
-                  <div className="h-4 w-24 bg-gray-300 mb-2 rounded"></div>
-                  <div className="h-6 w-3/4 bg-gray-300 mb-2 rounded"></div>
-                  <div className="h-4 w-full bg-gray-200 rounded"></div>
-                  <div className="h-4 w-5/6 bg-gray-200 mt-2 rounded"></div>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-1/3 flex flex-col gap-6">
-              {[1, 2].map((_, i) => (
-                <div key={i} className="bg-white rounded-lg animate-pulse">
-                  <div className="h-70 w-full bg-gray-300 rounded-t-lg"></div>
-                  <div className="py-4 px-1">
-                    <div className="h-4 w-20 bg-gray-300 mb-2 rounded"></div>
-                    <div className="h-5 w-3/4 bg-gray-300 rounded"></div>
+        {/* News Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
+          {newsItems.map((item, index) => (
+            <article
+              key={item.id}
+              className="group bg-white/70 backdrop-blur-md rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 border border-white/20"
+            >
+              {/* Image Container */}
+              <div className="relative h-64 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent z-10" />
+                <Image
+                  src={item.imageUrl}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                />
+
+                {/* Date Badge */}
+                <div className="absolute top-4 left-4 z-20">
+                  <div className="flex items-center space-x-2 bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 shadow-md">
+                    <div className="w-4 h-4 bg-blue-600 rounded-sm flex items-center justify-center">
+                      <div className="w-2 h-2 bg-white rounded-sm" />
+                    </div>
+                    <span className="text-sm font-medium text-slate-700">
+                      {item.date}
+                    </span>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {status === "failed" && (
-        <div className="container mx-auto px-4 py-8 max-w-[1380px]">
-          <p>Failed to fetch news. Please try again later!</p>
-        </div>
-      )}
-
-      {!isPageLoading && status === "succeeded" && newsItems.length === 0 && (
-        <div className="container mx-auto px-4 py-8 max-w-[1380px]">
-          <p>No News to display</p>
-        </div>
-      )}
-
-      {!isPageLoading && status === "succeeded" && newsItems.length > 0 && (
-        <div className="flex flex-col lg:flex-row gap-6">
-          {/* Left column - Main news */}
-          <div className="lg:w-2/3">
-            <a
-              href={newsItems[0]?.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white h-full flex flex-col rounded-lg "
-            >
-              <div className="h-64 md:h-150 w-full relative flex-shrink-0">
-                {newsItems[0]?.image_url && (
-                  <img
-                    src={newsItems[0].image_url}
-                    alt={newsItems[0].title || "News image"}
-                    onError={(e) =>
-                      (e.currentTarget.src = "/images/image-12.jpg")
-                    }
-                    className="rounded-t-lg w-full h-full object-cover absolute inset-0"
-                  />
-                )}
               </div>
-              <div className="px-1 py-6">
-                <span className="text-blue-800 font-semibold text-sm uppercase tracking-wider">
-                  {newsItems[0]?.category?.join(", ") || "General"}
-                </span>
-                <h2 className="text-xl font-bold mt-2 mb-2 text-gray-900 hover:text-orange-500">
-                  {newsItems[0]?.title}
-                </h2>
-                <p className="text-gray-700 leading-relaxed text-sm">
-                  {newsItems[0]?.description}
+
+              {/* Content */}
+              <div className="py-8">
+                <h3 className="text-xl font-bold text-slate-800 mb-4 group-hover:text-orange-500 transition-colors duration-300">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed mb-6 text-sm">
+                  {item.description}
                 </p>
+
+                {/* Read More Button */}
+                <button className="inline-flex items-center px-6 py-2.5 bg-slate-900 text-white font-medium text-sm rounded-full transition-all duration-300 hover:shadow-md group-hover:bg-orange-500">
+                  <span>Read More</span>
+                  <svg
+                    className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
               </div>
-            </a>
-          </div>
-
-          {/* Right column - Secondary news */}
-          <div className="lg:w-1/3 flex flex-col gap-6">
-            {newsItems[3] && (
-              <a
-                href={newsItems[3]?.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white rounded-lg "
-              >
-                <div className="h-70 w-full relative">
-                  {newsItems[3]?.image_url && (
-                    <img
-                      src={newsItems[3].image_url}
-                      alt={newsItems[3].title || "News image"}
-                      onError={(e) =>
-                        (e.currentTarget.src = "/images/image-12.jpg")
-                      }
-                      className="rounded-t-lg w-full h-full object-cover absolute inset-0"
-                    />
-                  )}
-                </div>
-                <div className="py-4 px-1">
-                  <span className="text-blue-800 font-semibold text-sm uppercase tracking-wider">
-                    {newsItems[3]?.category?.join(", ") || "General"}
-                  </span>
-                  <h3 className="text-md font-bold mt-2 text-gray-900 hover:text-orange-500">
-                    {newsItems[3]?.title?.split(" ").slice(0, 20).join(" ") +
-                      (newsItems[3]?.title?.split(" ").length > 10
-                        ? "..."
-                        : "")}
-                  </h3>
-                </div>
-              </a>
-            )}
-
-            {newsItems[2] && (
-              <a
-                href={newsItems[2]?.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white rounded-lg "
-              >
-                <div className="h-70 w-full relative">
-                  {newsItems[2]?.image_url && (
-                    <img
-                      src={newsItems[2].image_url}
-                      alt={newsItems[2].title || "News image"}
-                      onError={(e) =>
-                        (e.currentTarget.src = "/images/image-12.jpg")
-                      }
-                      className="rounded-t-lg w-full h-full object-cover absolute inset-0"
-                    />
-                  )}
-                </div>
-                <div className="py-4 px-1">
-                  <span className="text-blue-800 font-semibold text-sm uppercase tracking-wider">
-                    {newsItems[2]?.category?.join(", ") || "General"}
-                  </span>
-                  <h3 className="text-md font-bold mt-2 text-gray-900 hover:text-orange-500">
-                    {newsItems[2]?.title?.split(" ").slice(0, 20).join(" ") +
-                      (newsItems[2]?.title?.split(" ").length > 10
-                        ? "..."
-                        : "")}
-                  </h3>
-                </div>
-              </a>
-            )}
-          </div>
+            </article>
+          ))}
         </div>
-      )}
+
+        {/* Bottom CTA */}
+        {/* <div className="text-center mt-12">
+          <div className="inline-flex items-center space-x-4 bg-white/60 backdrop-blur-md rounded-full px-8 py-4 shadow-lg border border-white/20">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center">
+              <svg
+                className="w-4 h-4 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <span className="text-slate-700 font-medium">
+              Stay informed with our latest public service updates
+            </span>
+          </div>
+        </div> */}
+      </div>
     </div>
   );
-}
+};
+
+export default NewsComponent;

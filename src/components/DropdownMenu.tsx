@@ -13,13 +13,14 @@ interface DropdownMenuProps {
   label: string;
   items: DropdownItem[];
   isInSidebar?: boolean;
-  isScrolled?: boolean;
+  variant?: "light" | "dark";
 }
 
 export function DropdownMenu({
   label,
   items,
   isInSidebar = false,
+  variant = "dark",
 }: DropdownMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [expandedRegion, setExpandedRegion] = useState<string | null>(null);
@@ -27,6 +28,13 @@ export function DropdownMenu({
   const [closeTimeout, setCloseTimeout] = useState<ReturnType<
     typeof setTimeout
   > | null>(null);
+
+  // Color variables for sidebar/mobile
+  const textColor = variant === "dark" ? "text-white" : "text-gray-900";
+  const hoverTextColor =
+    variant === "dark" ? "hover:text-gray-200" : "hover:text-gray-600";
+  const focusTextColor =
+    variant === "dark" ? "focus:text-gray-200" : "focus:text-gray-600";
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
   const toggleRegion = (title: string) =>
@@ -45,10 +53,10 @@ export function DropdownMenu({
 
   if (isInSidebar) {
     return (
-      <div className="text-white">
+      <div className={textColor}>
         <button
           onClick={toggleDropdown}
-          className="w-full flex justify-between items-center text-sm font-semibold uppercase transition-all duration-200 text-white hover:text-gray-200 hover:pl-2 focus:outline-none focus:text-gray-200 focus:pl-2 py-1 cursor-pointer"
+          className={`w-full flex justify-between items-center text-sm font-semibold uppercase transition-all duration-200 ${textColor} ${hoverTextColor} hover:pl-2 focus:outline-none ${focusTextColor} focus:pl-2 py-1 cursor-pointer`}
         >
           {label}
           <ChevronDown
@@ -70,7 +78,7 @@ export function DropdownMenu({
                   <>
                     <button
                       onClick={() => toggleRegion(item.title)}
-                      className="flex justify-between w-full text-left text-white hover:text-gray-200 hover:pl-2 transition-all duration-200 focus:outline-none focus:text-gray-200 focus:pl-2 py-2 text-sm font-medium"
+                      className={`flex justify-between w-full text-left ${textColor} ${hoverTextColor} hover:pl-2 transition-all duration-200 focus:outline-none ${focusTextColor} focus:pl-2 py-2 text-sm font-medium`}
                     >
                       {item.title}
                       <ChevronDown
@@ -91,7 +99,7 @@ export function DropdownMenu({
                           <li key={idx}>
                             <a
                               href={sub.url}
-                              className="block text-white hover:text-gray-200 hover:pl-2 transition-all duration-200 focus:outline-none focus:text-gray-200 focus:pl-2 py-1 text-sm"
+                              className={`block ${textColor} ${hoverTextColor} hover:pl-2 transition-all duration-200 focus:outline-none ${focusTextColor} focus:pl-2 py-1 text-sm`}
                             >
                               {sub.title}
                             </a>
@@ -103,7 +111,7 @@ export function DropdownMenu({
                 ) : (
                   <a
                     href={item.url}
-                    className="block text-white hover:text-gray-200 hover:pl-2 transition-all duration-200 focus:outline-none focus:text-gray-200 focus:pl-2 py-2 text-sm font-medium"
+                    className={`block ${textColor} ${hoverTextColor} hover:pl-2 transition-all duration-200 focus:outline-none ${focusTextColor} focus:pl-2 py-2 text-sm font-medium`}
                   >
                     {item.title}
                   </a>
@@ -116,13 +124,18 @@ export function DropdownMenu({
     );
   }
 
+  // Original desktop hover dropdown styling
   return (
     <div
       className="relative"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <button className="flex items-center gap-1 text-xs font-semibold uppercase transition-colors text-white cursor-pointer hover:underline">
+      <button
+        className={`flex items-center gap-1 text-xs font-semibold uppercase transition-colors ${
+          variant === "dark" ? "text-white" : "text-gray-900"
+        } cursor-pointer hover:underline`}
+      >
         {label}
         <ChevronDown
           className={`w-3 h-3 transition-transform ${

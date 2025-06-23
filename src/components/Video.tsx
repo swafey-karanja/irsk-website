@@ -99,20 +99,17 @@ export default function Video() {
   // Intersection Observer for stats animation
 
   return (
-    <div
-      className="pb-4 pt-8 min-h-screen"
-      aria-labelledby="video-section-title"
-    >
+    <div className="pt-8 min-h-screen" aria-labelledby="video-section-title">
       <div className="w-full max-w-7xl mx-auto px-2 lg:px-4 py-2">
         {/* Title */}
         <header className="text-center mb-8 lg:mb-12">
           <h2
             id="video-section-title"
-            className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600 mb-4"
+            className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600/80 mb-4"
           >
             2024 IRSK Conference Highlights
           </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
+          <div className="w-20 h-1 bg-blue-600/80 mx-auto rounded-full"></div>
         </header>
 
         {/* Video Layout Container */}
@@ -167,7 +164,7 @@ export default function Video() {
           {/* Video Playlist - Right Side */}
           <aside className="xl:w-1/3" aria-label="Video playlist">
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
-              <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
+              <div className="bg-blue-600/80 px-6 py-4">
                 <h4 className="text-lg font-semibold text-white flex items-center gap-2">
                   <Play size={20} />
                   Conference Videos
@@ -251,7 +248,7 @@ export default function Video() {
       </div>
 
       {/* Stats Section */}
-      <div className="w-full flex justify-center py-2">
+      <div className="w-full flex justify-center py-12 bg-blue-600/40">
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 w-[90%] max-w-7xl">
           {stats.map((stat, index) => (
             <div
