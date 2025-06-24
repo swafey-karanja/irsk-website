@@ -1,4 +1,5 @@
 import React from "react";
+import Speakers from "./Speakers";
 
 interface StatisticProps {
   number: string;
@@ -74,7 +75,7 @@ const AboutPage: React.FC = () => {
     },
     {
       number: "24/7",
-      label: "Emergency Response",
+      label: "Service Delivery",
       icon: (
         <svg
           className="w-8 h-8"
@@ -134,9 +135,9 @@ const AboutPage: React.FC = () => {
       ),
     },
     {
-      title: "Excellence",
+      title: "Neutrality",
       description:
-        "We strive for continuous improvement and innovation in our services, ensuring the highest quality outcomes for our community.",
+        "We strive for a policy neutral, non-partisan approach to our operations.",
       icon: (
         <svg
           className="w-12 h-12"
@@ -154,9 +155,9 @@ const AboutPage: React.FC = () => {
       ),
     },
     {
-      title: "Accountability",
+      title: "Inclusiveness",
       description:
-        "We take responsibility for our actions and decisions, maintaining transparency and answering to the public we serve.",
+        "We make sure to foster and promote broad and diverse membership.",
       icon: (
         <svg
           className="w-12 h-12"
@@ -174,9 +175,9 @@ const AboutPage: React.FC = () => {
       ),
     },
     {
-      title: "Service",
+      title: "Professionalism",
       description:
-        "We are dedicated to serving our community with compassion, professionalism, and unwavering commitment to public welfare.",
+        "We strive to promote professional excellence and competence.",
       icon: (
         <svg
           className="w-12 h-12"
@@ -193,46 +194,6 @@ const AboutPage: React.FC = () => {
         </svg>
       ),
     },
-    {
-      title: "Innovation",
-      description:
-        "We embrace modern technologies and progressive approaches to enhance our service delivery and operational efficiency.",
-      icon: (
-        <svg
-          className="w-12 h-12"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-          />
-        </svg>
-      ),
-    },
-    {
-      title: "Collaboration",
-      description:
-        "We foster partnerships with community stakeholders, other agencies, and citizens to achieve shared goals and mutual success.",
-      icon: (
-        <svg
-          className="w-12 h-12"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-          />
-        </svg>
-      ),
-    },
   ];
 
   return (
@@ -241,14 +202,70 @@ const AboutPage: React.FC = () => {
       <section className="relative py-12 px-4 overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-10">
-            <h1 className="text-5xl md:text-7xl font-bold text-slate-800 mb-6">
-              About <span className="text-blue-600">IRSK</span>
-            </h1>
-            <p className="text-md text-slate-600 max-w-4xl mx-auto leading-relaxed">
-              The Integrated Response and Safety Koordination is a premier
-              public service institution dedicated to ensuring community safety,
-              emergency coordination, and public welfare.
-            </p>
+            <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600 mb-4">
+              About IRSK
+            </h2>
+            <div className="w-16 sm:w-20 h-1 bg-blue-600 mx-auto mb-4 sm:mb-6"></div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <div className="prose prose-lg text-slate-600 space-y-6 text-left">
+                  <p className="leading-relaxed">
+                    The International Relations Society of Kenya (IRSK) serves
+                    as a forum for exchanging ideas, networking and programmatic
+                    initiatives among those involved in the study, teaching and
+                    practice of international relations and diplomacy. In
+                    fulfilling our primary role as the hub for international
+                    relations and diplomacy professionals, we work to promote
+                    interest in the field, develop expertise and understanding
+                    of global issues, connect the IRSK community, and support
+                    our membership in fulfilling their ambitions. To this end,
+                    the Society is committed to nurturing new generations of
+                    global-minded leaders and supporting initiatives geared
+                    towards making the world a more peaceful, safe and
+                    prosperous place.
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative">
+                <div className="bg-gradient-to-br from-blue-600/20 to-indigo-600/20 rounded-3xl p-8 backdrop-blur-sm border border-white/20">
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="text-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
+                      <div className="text-2xl font-bold text-blue-600 mb-2">
+                        5
+                      </div>
+                      <div className="text-sm text-slate-600">
+                        Specialized Divisions
+                      </div>
+                    </div>
+                    <div className="text-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
+                      <div className="text-2xl font-bold text-blue-600 mb-2">
+                        200+
+                      </div>
+                      <div className="text-sm text-slate-600">
+                        Trained Personnel
+                      </div>
+                    </div>
+                    <div className="text-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
+                      <div className="text-2xl font-bold text-blue-600 mb-2">
+                        12
+                      </div>
+                      <div className="text-sm text-slate-600">
+                        Service Locations
+                      </div>
+                    </div>
+                    <div className="text-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
+                      <div className="text-2xl font-bold text-blue-600 mb-2">
+                        ISO
+                      </div>
+                      <div className="text-sm text-slate-600">
+                        Certified Operations
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Statistics */}
@@ -287,12 +304,11 @@ const AboutPage: React.FC = () => {
                 </h2>
               </div>
               <p className="text-slate-600 leading-relaxed text-md">
-                To provide comprehensive, coordinated, and effective emergency
-                response services while fostering community safety through
-                proactive prevention, rapid intervention, and collaborative
-                partnerships. We are committed to protecting lives, property,
-                and the well-being of all citizens through innovative solutions
-                and dedicated service.
+                IRSK&apos;s mission is to serve as a policy-neutral platform
+                through which a community of international relations and
+                diplomacy practitioners, experts and scholars will be actively
+                involved in continuous learning, engagement and knowledge
+                sharing.
               </p>
             </div>
 
@@ -325,114 +341,30 @@ const AboutPage: React.FC = () => {
                 </h2>
               </div>
               <p className="text-slate-600 leading-relaxed text-md">
-                To be the leading model of integrated public safety and
-                emergency response, recognized for our excellence in service
-                delivery, technological innovation, and community engagement. We
-                envision a safer, more resilient society where every citizen
-                feels protected and supported by our comprehensive emergency
-                management system.
+                A vibrant professional body that is a trusted interlocutor on
+                international relations and diplomacy issues in Kenya and
+                beyond.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Institution */}
-      <section className="py-20 px-4 bg-white/30 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-6">
-              About IRSK
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-8 rounded-full" />
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="prose prose-lg text-slate-600 space-y-6">
-                <p className="leading-relaxed">
-                  The Integrated Response and Safety Koordination (IRSK) was
-                  established as a comprehensive public safety institution
-                  designed to streamline emergency response and enhance
-                  community protection through coordinated efforts.
-                </p>
-                <p>
-                  Our institution brings together various emergency services,
-                  safety departments, and community programs under one unified
-                  command structure, ensuring rapid response times and efficient
-                  resource allocation during critical situations.
-                </p>
-                <p>
-                  IRSK operates through multiple specialized divisions including
-                  Emergency Medical Services, Fire and Rescue Operations, Public
-                  Safety Coordination, Disaster Management, and Community
-                  Outreach Programs. Each division works in harmony to provide
-                  comprehensive coverage and support to our community.
-                </p>
-                <p>
-                  We leverage cutting-edge technology, continuous training
-                  programs, and community partnerships to maintain our position
-                  as a leader in public safety and emergency response services.
-                </p>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="bg-gradient-to-br from-blue-600/20 to-indigo-600/20 rounded-3xl p-8 backdrop-blur-sm border border-white/20">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-blue-600 mb-2">
-                      5
-                    </div>
-                    <div className="text-sm text-slate-600">
-                      Specialized Divisions
-                    </div>
-                  </div>
-                  <div className="text-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-blue-600 mb-2">
-                      200+
-                    </div>
-                    <div className="text-sm text-slate-600">
-                      Trained Personnel
-                    </div>
-                  </div>
-                  <div className="text-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-blue-600 mb-2">
-                      12
-                    </div>
-                    <div className="text-sm text-slate-600">
-                      Service Locations
-                    </div>
-                  </div>
-                  <div className="text-center p-6 bg-white/60 rounded-2xl backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-blue-600 mb-2">
-                      ISO
-                    </div>
-                    <div className="text-sm text-slate-600">
-                      Certified Operations
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Core Values */}
-      <section className="py-20 px-4 bg-blue-600/30">
+      <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-800 mb-6">
+            <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600 mb-4">
               Our Core Values
             </h2>
+            <div className="w-16 sm:w-20 h-1 bg-blue-600 mx-auto mb-4 sm:mb-6"></div>
             <p className="text-md text-slate-600 max-w-3xl mx-auto">
               These fundamental principles guide our actions, decisions, and
               commitment to serving our community with distinction.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <ValueCard key={index} {...value} />
             ))}
@@ -440,18 +372,23 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
+      <section className="py-10 px-4 bg-blue-600/30">
+        <Speakers />
+      </section>
+
       {/* Call to Action */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-slate-800 mb-6">
+          <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600 mb-4">
             Ready to Learn More?
           </h2>
+          <div className="w-16 sm:w-20 h-1 bg-blue-600 mx-auto mb-4 sm:mb-6"></div>
           <p className="text-md text-slate-600 mb-8">
             Connect with IRSK to discover how we can serve your community needs
             or explore career opportunities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105">
+            <button className="px-8 py-4 bg-orange-400 hover:bg-orange-500 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105">
               Contact Us
             </button>
             <button className="px-8 py-4 bg-white/70 backdrop-blur-sm hover:bg-white/90 text-slate-800 font-semibold rounded-full border border-white/20 transition-all duration-300 hover:shadow-lg">

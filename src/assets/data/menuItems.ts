@@ -22,7 +22,7 @@ export const programsMenu: DropdownItem[] = [
 export const eventsDropdown: DropdownItem[] = [
   {
     title: "CONFERENCES",
-    url: "#",
+    url: "/conferences",
     subItems: [
       { title: "2024 IRSK CONFERENCE", url: "#" },
       { title: "2023 IRSK CONFERENCE", url: "#" },
@@ -30,7 +30,7 @@ export const eventsDropdown: DropdownItem[] = [
   },
   {
     title: "FORUMS",
-    url: "#",
+    url: "/forums",
     subItems: [
       { title: "2025 CAREER & MENTORSHIP FORUM", url: "" },
       { title: "2023 CAREER & MENTORSHIP FORUM", url: "" },

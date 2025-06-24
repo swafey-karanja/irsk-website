@@ -12,31 +12,12 @@ import {
   programsMenu,
 } from "@/assets/data/menuItems";
 
-interface NavbarProps {
-  variant?: "light" | "dark";
-}
-
-export default function Navbar({ variant = "dark" }: NavbarProps) {
+export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
-  // Determine colors based on variant
-  const textColor = variant === "dark" ? "text-white" : "text-gray-900";
-  const hoverTextColor =
-    variant === "dark" ? "hover:text-gray-200" : "hover:text-gray-600";
-  const focusTextColor =
-    variant === "dark" ? "focus:text-gray-200" : "focus:text-gray-600";
-  const borderColor = variant === "dark" ? "border-white" : "border-gray-900";
-  const buttonBgColor =
-    variant === "dark" ? "bg-white text-black" : "bg-gray-900 text-white";
-  const buttonHoverBgColor =
-    variant === "dark" ? "hover:bg-gray-100" : "hover:bg-gray-800";
-  const mobileMenuBg = variant === "dark" ? "bg-black/40" : "bg-white/90";
-  const focusRingColor =
-    variant === "dark" ? "focus:ring-white" : "focus:ring-gray-900";
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -66,8 +47,7 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
     {
       icon: FaFacebook,
       href: "#",
-      hoverColor:
-        variant === "dark" ? "hover:text-blue-300" : "hover:text-blue-600",
+      hoverColor: "hover:text-blue-300",
       label: "Facebook",
     },
   ];
@@ -76,7 +56,7 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
     <>
       {/* Desktop Navbar */}
       <nav
-        className={`hidden lg:flex w-[98%] ${textColor} min-h-[120px]`}
+        className="hidden lg:flex w-[98%] text-white min-h-[120px]"
         role="navigation"
         aria-label="Main navigation"
       >
@@ -84,7 +64,7 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
         <div className="flex items-center justify-center px-6 pt-12 h-full">
           <Link
             href="/"
-            className={`block transition-transform hover:scale-105 focus:outline-none focus:ring-2 ${focusRingColor} focus:ring-offset-2 focus:ring-offset-transparent rounded`}
+            className="block transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded"
           >
             <Image
               src="/logos/International-Relations-Society-of-Kenya-IRSK-Logo (1).webp"
@@ -101,9 +81,7 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
         {/* Main nav content */}
         <div className="flex-1 flex flex-col justify-end">
           {/* Bottom section with navigation and right actions */}
-          <div
-            className={`flex items-center justify-between pb-2 border-b-2 ${borderColor} w-full`}
-          >
+          <div className="flex items-center justify-between pb-2 border-b-2 border-white w-full">
             {/* Navigation links */}
             <ul
               className="flex gap-6 items-center text-[15px] py-2"
@@ -113,7 +91,7 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
                 <li key={item.label} role="none">
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-1 text-xs font-semibold uppercase transition-all duration-200 ${textColor} hover:underline ${hoverTextColor} focus:outline-none focus:underline ${focusTextColor} py-1 px-1 rounded`}
+                    className="flex items-center gap-1 text-xs font-semibold uppercase transition-all duration-200 text-white hover:underline hover:text-gray-200 focus:outline-none focus:underline focus:text-gray-200 py-1 px-1 rounded"
                     role="menuitem"
                   >
                     {item.label}
@@ -125,7 +103,6 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
                   label="Programs"
                   items={programsMenu}
                   isInSidebar={false}
-                  variant={variant}
                 />
               </li>
               <li className="relative group" role="none">
@@ -133,7 +110,6 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
                   label="Events"
                   items={eventsDropdown}
                   isInSidebar={false}
-                  variant={variant}
                 />
               </li>
               <li className="relative group" role="none">
@@ -141,7 +117,6 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
                   label="Media"
                   items={mediaDropdown}
                   isInSidebar={false}
-                  variant={variant}
                 />
               </li>
             </ul>
@@ -158,7 +133,7 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
                   <Link
                     key={label}
                     href={href}
-                    className={`transition-all duration-200 ${hoverColor} hover:scale-110 focus:outline-none focus:ring-2 ${focusRingColor} focus:ring-offset-2 focus:ring-offset-transparent rounded p-1`}
+                    className={`transition-all duration-200 ${hoverColor} hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded p-1`}
                     aria-label={`Visit our ${label} page`}
                     role="listitem"
                   >
@@ -169,7 +144,7 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
 
               {/* Search button */}
               <button
-                className={`p-2 rounded-full ${buttonBgColor} transition-all duration-200 ${buttonHoverBgColor} hover:scale-105 focus:outline-none focus:ring-2 ${focusRingColor} focus:ring-offset-2 focus:ring-offset-transparent`}
+                className="p-2 rounded-full bg-white text-black transition-all duration-200 hover:bg-gray-100 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
                 aria-label="Search"
                 type="button"
               >
@@ -182,25 +157,17 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
 
       {/* Mobile Navbar */}
       <nav
-        className={`lg:hidden w-full ${textColor} ${
-          isMobileMenuOpen
-            ? `backdrop-blur-sm ${
-                variant === "dark" ? "bg-black/40" : "bg-white/80"
-              }`
-            : ""
+        className={`lg:hidden w-full text-white ${
+          isMobileMenuOpen ? "backdrop-blur-sm bg-black/40" : ""
         }`}
         role="navigation"
         aria-label="Mobile navigation"
       >
-        <div
-          className={`flex items-center justify-between p-4 ${
-            variant === "dark" ? "border-white/20" : "border-gray-300"
-          } border-b`}
-        >
+        <div className="flex items-center justify-between p-4 border-b border-white/20">
           {/* Mobile Logo */}
           <Link
             href="/"
-            className={`block transition-transform hover:scale-105 focus:outline-none focus:ring-2 ${focusRingColor} focus:ring-offset-2 focus:ring-offset-transparent rounded`}
+            className="block transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded"
           >
             <Image
               src="/logos/International-Relations-Society-of-Kenya-IRSK-Logo (1).webp"
@@ -217,7 +184,7 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
           <div className="flex items-center gap-4">
             {/* Search button */}
             <button
-              className={`p-2 rounded-full ${buttonBgColor} transition-all duration-200 ${buttonHoverBgColor} focus:outline-none focus:ring-2 ${focusRingColor} focus:ring-offset-2 focus:ring-offset-transparent`}
+              className="p-2 rounded-full bg-white text-black transition-all duration-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
               aria-label="Search"
               type="button"
             >
@@ -227,11 +194,7 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
             {/* Mobile menu toggle */}
             <button
               onClick={toggleMobileMenu}
-              className={`p-2 rounded-md transition-colors duration-200 ${
-                variant === "dark"
-                  ? "hover:bg-white/10"
-                  : "hover:bg-gray-900/10"
-              } focus:outline-none focus:ring-2 ${focusRingColor} focus:ring-offset-2 focus:ring-offset-transparent`}
+              className="p-2 rounded-md transition-colors duration-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent"
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileMenuOpen}
               type="button"
@@ -253,14 +216,14 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
           }}
           aria-hidden={!isMobileMenuOpen}
         >
-          <div className={`px-4 py-6 ${mobileMenuBg}`}>
+          <div className="px-4 py-6 bg-black/40">
             {/* Mobile Navigation Links */}
             <ul className="space-y-4 mb-6" role="menu">
               {navItems.map((item) => (
                 <li key={item.label} role="none">
                   <Link
                     href={item.href}
-                    className={`block text-sm font-semibold uppercase transition-all duration-200 ${textColor} ${hoverTextColor} hover:pl-2 focus:outline-none ${focusTextColor} focus:pl-2 py-2`}
+                    className="block text-sm font-semibold uppercase transition-all duration-200 text-white hover:text-gray-200 hover:pl-2 focus:outline-none focus:text-gray-200 focus:pl-2 py-2"
                     onClick={() => setIsMobileMenuOpen(false)}
                     role="menuitem"
                   >
@@ -269,38 +232,29 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
                 </li>
               ))}
               <li role="none">
-                <div
-                  className={`block text-sm font-semibold uppercase transition-all duration-200 ${textColor} ${hoverTextColor} hover:pl-2 focus:outline-none ${focusTextColor} focus:pl-2 py-2`}
-                >
+                <div className="block text-sm font-semibold uppercase transition-all duration-200 text-white hover:text-gray-200 hover:pl-2 focus:outline-none focus:text-gray-200 focus:pl-2 py-2">
                   <DropdownMenu
                     label="Programs"
                     items={programsMenu}
                     isInSidebar={true}
-                    variant={variant}
                   />
                 </div>
               </li>
               <li role="none">
-                <div
-                  className={`block text-sm font-semibold uppercase transition-all duration-200 ${textColor} ${hoverTextColor} hover:pl-2 focus:outline-none ${focusTextColor} focus:pl-2 py-2`}
-                >
+                <div className="block text-sm font-semibold uppercase transition-all duration-200 text-white hover:text-gray-200 hover:pl-2 focus:outline-none focus:text-gray-200 focus:pl-2 py-2">
                   <DropdownMenu
                     label="Events"
                     items={eventsDropdown}
                     isInSidebar={true}
-                    variant={variant}
                   />
                 </div>
               </li>
               <li role="none">
-                <div
-                  className={`block text-sm font-semibold uppercase transition-all duration-200 ${textColor} ${hoverTextColor} hover:pl-2 focus:outline-none ${focusTextColor} focus:pl-2 py-2`}
-                >
+                <div className="block text-sm font-semibold uppercase transition-all duration-200 text-white hover:text-gray-200 hover:pl-2 focus:outline-none focus:text-gray-200 focus:pl-2 py-2">
                   <DropdownMenu
                     label="Media"
                     items={mediaDropdown}
                     isInSidebar={true}
-                    variant={variant}
                   />
                 </div>
               </li>
@@ -308,11 +262,7 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
 
             {/* Mobile Social Links */}
             <div className="pt-1">
-              <p
-                className={`text-xs font-semibold uppercase mb-3 ${
-                  variant === "dark" ? "text-gray-300" : "text-gray-600"
-                }`}
-              >
+              <p className="text-xs font-semibold uppercase mb-3 text-gray-300">
                 Follow Us
               </p>
               <div
@@ -324,7 +274,7 @@ export default function Navbar({ variant = "dark" }: NavbarProps) {
                   <Link
                     key={label}
                     href={href}
-                    className={`transition-all duration-200 ${hoverColor} hover:scale-110 focus:outline-none focus:ring-2 ${focusRingColor} focus:ring-offset-2 focus:ring-offset-transparent rounded p-1`}
+                    className={`transition-all duration-200 ${hoverColor} hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded p-1`}
                     aria-label={`Visit our ${label} page`}
                     role="listitem"
                   >

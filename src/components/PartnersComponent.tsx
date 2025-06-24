@@ -154,8 +154,8 @@ const PartnersSection: React.FC = () => {
                           <Image
                             src={partner.logo}
                             alt={partner.name}
-                            layout="fill"
-                            objectFit="contain"
+                            fill
+                            className="object-contain"
                           />
                         </div>
                       </div>

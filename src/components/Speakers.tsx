@@ -91,7 +91,7 @@ export default function Speakers() {
       {/* Header with blue line accent */}
       <header className="text-center mb-12 sm:mb-16">
         <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600 mb-4">
-          Featured Speakers
+          Our Committee
         </h2>
         <div className="w-16 sm:w-20 h-1 bg-blue-600 mx-auto mb-4 sm:mb-6"></div>
       </header>

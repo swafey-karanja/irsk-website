@@ -3,14 +3,14 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <section className="py-16 bg-gradient-to-br from-slate-900/95 via-blue-900/90 to-indigo-900/95 backdrop-blur-xl border-t border-white/10 bottom-0 mt-auto">
+    <section className="py-16 bg-gradient-to-br from-indigo-900/85 via-blue-900/90 to-indigo-900/85 backdrop-blur-xl border-t border-white/10">
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="grid grid-cols-2 md:col-span-3 lg:grid-cols-6 gap-y-16 gap-x-12">
           {/* Company Info Column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2 lg:pr-8">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 inline-block mb-6 border border-white/20">
               <Image
-                className="w-auto h-9 brightness-0 invert"
+                className="w-auto h-9 invert"
                 width={50}
                 height={40}
                 src="/logos/International-Relations-Society-of-Kenya-IRSK-Logo (1).webp"
@@ -371,7 +371,7 @@ const Footer: React.FC = () => {
 
               <button
                 type="submit"
-                className="inline-flex items-center justify-center w-full px-6 py-4 font-semibold text-white transition-all duration-200 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl hover:from-blue-700 hover:to-indigo-700 focus:from-blue-700 focus:to-indigo-700 hover:shadow-lg hover:scale-105 backdrop-blur-sm"
+                className="inline-flex items-center justify-center w-full px-6 py-4 font-semibold text-white transition-all duration-200 bg-orange-400 rounded-xl hover:bg-orange-500 focus:bg-orange-500 hover:shadow-lg hover:scale-105 backdrop-blur-sm"
               >
                 <svg
                   className="w-4 h-4 mr-2"

@@ -147,30 +147,6 @@ const NewsComponent: React.FC<NewsComponentProps> = ({
             </article>
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        {/* <div className="text-center mt-12">
-          <div className="inline-flex items-center space-x-4 bg-white/60 backdrop-blur-md rounded-full px-8 py-4 shadow-lg border border-white/20">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center">
-              <svg
-                className="w-4 h-4 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <span className="text-slate-700 font-medium">
-              Stay informed with our latest public service updates
-            </span>
-          </div>
-        </div> */}
       </div>
     </div>
   );
