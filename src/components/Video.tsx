@@ -1,10 +1,19 @@
 "use client";
 
-import { Globe, Building, Group, Camera, Play, Clock } from "lucide-react";
+import { Play, Clock } from "lucide-react";
 import Image from "next/image";
 import { useState, useRef, useCallback } from "react";
+import SectionHeader from "./SectionHeader";
 
-export default function Video() {
+interface ConferenceVideosProps {
+  sectionTitle?: string;
+  sectionSubtitle?: string;
+}
+
+export default function ConferenceVideos({
+  sectionTitle = "",
+  sectionSubtitle,
+}: ConferenceVideosProps) {
   const [selectedVideo, setSelectedVideo] = useState(0);
   const [isVideoLoading, setIsVideoLoading] = useState(false);
   const [imageLoadErrors, setImageLoadErrors] = useState<Set<string>>(
@@ -51,41 +60,11 @@ export default function Video() {
     },
   ];
 
-  const stats = [
-    {
-      icon: <Globe className="text-blue-500" size={24} />,
-      number: "+10 ",
-      description: "Countries represented",
-    },
-    {
-      icon: <Group className="text-blue-500" size={24} />,
-      number: "+1500 ",
-      description: "Participants ",
-    },
-    {
-      icon: <Camera className="text-blue-500" size={24} />,
-      number: "+70",
-      description: "Journalists",
-    },
-    {
-      icon: <Building className="text-blue-500" size={24} />,
-      number: "+200",
-      description: "Government participants",
-    },
-    {
-      icon: <Group className="text-blue-500" size={24} />,
-      number: "+500",
-      description: "Women leaders",
-    },
-  ];
-
   const handleVideoSelect = useCallback(
     (index: number) => {
       if (index !== selectedVideo) {
         setIsVideoLoading(true);
         setSelectedVideo(index);
-
-        // Reset loading state after iframe loads
         setTimeout(() => setIsVideoLoading(false), 1000);
       }
     },
@@ -96,25 +75,13 @@ export default function Video() {
     setImageLoadErrors((prev) => new Set(prev).add(videoId));
   }, []);
 
-  // Intersection Observer for stats animation
-
   return (
-    <div className="pt-8 min-h-screen" aria-labelledby="video-section-title">
+    <div className="pt-8 min-h-auto" aria-labelledby="video-section-title">
       <div className="w-full max-w-7xl mx-auto px-2 lg:px-4 py-2">
-        {/* Title */}
-        <header className="text-center mb-8 lg:mb-12">
-          <h2
-            id="video-section-title"
-            className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600/80 mb-4"
-          >
-            2024 IRSK Conference Highlights
-          </h2>
-          <div className="w-20 h-1 bg-blue-600/80 mx-auto rounded-full"></div>
-        </header>
+        <SectionHeader title={sectionTitle} subtitle={sectionSubtitle} />
 
-        {/* Video Layout Container */}
         <div className="flex flex-col xl:flex-row gap-6 lg:gap-8 mb-8 lg:mb-12 px-3">
-          {/* Main Video Section - Left Side */}
+          {/* Left: Main Video Player */}
           <div className="flex-1 xl:w-2/3">
             <div className="rounded-xl overflow-hidden shadow-xl bg-black relative group">
               {isVideoLoading && (
@@ -137,7 +104,6 @@ export default function Video() {
               </div>
             </div>
 
-            {/* Video Title and Description */}
             <div className="mt-6 lg:mt-8">
               <h3 className="text-xl lg:text-2xl font-bold text-gray-800 mb-4 leading-tight">
                 {videos[selectedVideo].title}
@@ -147,21 +113,15 @@ export default function Video() {
                   <strong className="text-blue-600">
                     The International Relations Society of Kenya (IRSK)
                   </strong>{" "}
-                  held a three-day event in collaboration with the Common Market
-                  for Eastern and Southern Africa (COMESA) and the African
-                  Centre for the Constructive Resolution of Disputes (ACCORD)
-                  based in South Africa. The conference brought together various
-                  stakeholders including key government officials, diplomats,
-                  scholars, policymakers, business leaders, media and members of
-                  civil society to dissect the multiple crises and geopolitical
-                  divides that are redefining international relations and
-                  diplomacy in the COMESA region.
+                  held a three-day event in collaboration with COMESA and
+                  ACCORD, bringing together stakeholders to discuss pressing
+                  geopolitical challenges in the region.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Video Playlist - Right Side */}
+          {/* Right: Playlist */}
           <aside className="xl:w-1/3" aria-label="Video playlist">
             <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
               <div className="bg-blue-600/80 px-6 py-4">
@@ -208,14 +168,10 @@ export default function Video() {
                             <Play className="text-gray-500" size={20} />
                           </div>
                         )}
-
-                        {/* Duration Badge */}
                         <span className="absolute bottom-1 right-1 bg-black/80 text-white text-xs px-2 py-1 rounded flex items-center gap-1">
                           <Clock size={10} />
                           {video.duration}
                         </span>
-
-                        {/* Play Overlay */}
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors rounded-lg flex items-center justify-center">
                           <Play
                             className="text-white opacity-0 group-hover:opacity-100 transition-opacity"
@@ -223,7 +179,6 @@ export default function Video() {
                           />
                         </div>
                       </div>
-
                       <div className="flex-1 min-w-0">
                         <h5
                           className={`text-sm font-medium line-clamp-2 leading-tight mb-1 ${
@@ -244,28 +199,6 @@ export default function Video() {
               </div>
             </div>
           </aside>
-        </div>
-      </div>
-
-      {/* Stats Section */}
-      <div className="w-full flex justify-center py-12 bg-blue-600/40">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 w-[90%] max-w-7xl">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="w-full px-4 py-6 border shadow-lg rounded-lg bg-orange-400 flex flex-col items-center text-center"
-            >
-              <div className="mb-3 p-2 bg-gray-100 rounded-full">
-                {stat.icon}
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-1">
-                {stat.number}
-              </h3>
-              <p className="text-xs sm:text-sm text-white">
-                {stat.description}
-              </p>
-            </div>
-          ))}
         </div>
       </div>
 

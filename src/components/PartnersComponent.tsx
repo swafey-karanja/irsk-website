@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import SectionHeader from "./SectionHeader";
 
 interface Partner {
   id: string;
@@ -100,15 +101,7 @@ const PartnersSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <header className="text-center mb-8 lg:mb-12">
-            <h2
-              id="video-section-title"
-              className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600/80 mb-4"
-            >
-              Our Partners
-            </h2>
-            <div className="w-20 h-1 bg-blue-600/80 mx-auto rounded-full"></div>
-          </header>
+          <SectionHeader title="Our Partners" />
         </div>
 
         {/* Partners Container */}

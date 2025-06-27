@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import SectionHeader from "./SectionHeader";
 
 interface FAQ {
   id: string;
@@ -66,10 +67,7 @@ const FAQSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-600/90 mb-4">
-            Frequently Asked Questions
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mb-6"></div>
+          <SectionHeader title="Frequently Asked Questions" />
         </div>
 
         {/* FAQ Accordion */}

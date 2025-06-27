@@ -11,6 +11,7 @@ interface HeroProps {
   showContent?: boolean;
   showScrollIndicator?: boolean;
   customTitle?: React.ReactNode;
+  customSubtitle?: React.ReactNode; // ✅ NEW
 }
 
 export default function Hero({
@@ -19,6 +20,7 @@ export default function Hero({
   showContent = true,
   showScrollIndicator = true,
   customTitle,
+  customSubtitle, // ✅ NEW
 }: HeroProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -67,10 +69,15 @@ export default function Hero({
 
       {/* Content (optional) */}
       {customTitle ? (
-        <div className="absolute inset-0 z-20 flex items-center justify-center text-center px-4">
-          <div className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-6xl leading-tight mt-35">
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 mt-35">
+          <div className="text-white text-2xl sm:text-5xl font-bold leading-tight">
             {customTitle}
           </div>
+          {customSubtitle && (
+            <div className="text-gray-200 text-base sm:text-xl mt-3 max-w-2xl">
+              {customSubtitle}
+            </div>
+          )}
         </div>
       ) : (
         showContent && (

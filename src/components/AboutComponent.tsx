@@ -1,5 +1,6 @@
 import React from "react";
 import Speakers from "./Speakers";
+import SectionHeader from "./SectionHeader";
 
 interface StatisticProps {
   number: string;
@@ -202,10 +203,7 @@ const AboutPage: React.FC = () => {
       <section className="relative py-12 px-4 overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-10">
-            <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600 mb-4">
-              About IRSK
-            </h2>
-            <div className="w-16 sm:w-20 h-1 bg-blue-600 mx-auto mb-4 sm:mb-6"></div>
+            <SectionHeader title="About IRSK" />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
                 <div className="prose prose-lg text-slate-600 space-y-6 text-left">
@@ -354,10 +352,7 @@ const AboutPage: React.FC = () => {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600 mb-4">
-              Our Core Values
-            </h2>
-            <div className="w-16 sm:w-20 h-1 bg-blue-600 mx-auto mb-4 sm:mb-6"></div>
+            <SectionHeader title="Our Core Values" />
             <p className="text-md text-slate-600 max-w-3xl mx-auto">
               These fundamental principles guide our actions, decisions, and
               commitment to serving our community with distinction.
@@ -373,16 +368,16 @@ const AboutPage: React.FC = () => {
       </section>
 
       <section className="py-10 px-4 bg-blue-600/30">
-        <Speakers />
+        <Speakers
+          sectionTitle="Meet Our Comittee"
+          buttonLabel="See Full Comittee"
+        />
       </section>
 
       {/* Call to Action */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600 mb-4">
-            Ready to Learn More?
-          </h2>
-          <div className="w-16 sm:w-20 h-1 bg-blue-600 mx-auto mb-4 sm:mb-6"></div>
+          <SectionHeader title="Ready to Learn More?" />
           <p className="text-md text-slate-600 mb-8">
             Connect with IRSK to discover how we can serve your community needs
             or explore career opportunities.

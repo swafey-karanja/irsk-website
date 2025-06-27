@@ -37,6 +37,14 @@ export const eventsDropdown: DropdownItem[] = [
     ],
   },
   {
+    title: "OTHER EVENTS",
+    url: "/forums",
+    subItems: [
+      { title: "2025 CUEA EVENT", url: "" },
+      { title: "2023 CUEA EVENT", url: "" },
+    ],
+  },
+  {
     title: "WEBINARS",
     url: "#",
   },
@@ -49,6 +57,10 @@ export const mediaDropdown: DropdownItem[] = [
   },
   {
     title: "PRESS RELEASE",
+    url: "#",
+  },
+  {
+    title: "PHOTOS & VIDEOS",
     url: "#",
   },
 ];

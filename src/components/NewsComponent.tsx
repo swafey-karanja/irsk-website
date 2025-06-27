@@ -4,6 +4,7 @@
 import React, { useState } from "react";
 import { MessageSquare, ChevronRight, ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import ForumDetails from "./ForumDetails";
 
 export interface Forum {
   id: number;
@@ -17,21 +18,25 @@ export interface Forum {
   image: string;
 }
 
+// Add these props
 interface NewsComponentProps {
   forumsData: Forum[];
-  heroImageSrc: string;
-  heroTitle: React.ReactNode;
-  heroSubtitle: React.ReactNode;
+  selectedForum: Forum | null;
+  setSelectedForum: (forum: Forum | null) => void;
   emptyStateTitle?: string;
   emptyStateDescription?: string;
+  heroImageSrc?: string;
+  heroTitle?: React.ReactNode;
+  heroSubtitle?: React.ReactNode;
 }
 
 const NewsComponent: React.FC<NewsComponentProps> = ({
   forumsData,
+  selectedForum,
+  setSelectedForum,
   emptyStateTitle = "No forums found",
   emptyStateDescription = "Try adjusting your search terms.",
 }) => {
-  const [selectedForum, setSelectedForum] = useState<Forum | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredForums = forumsData.filter(
@@ -42,34 +47,10 @@ const NewsComponent: React.FC<NewsComponentProps> = ({
 
   if (selectedForum) {
     return (
-      <div className="h-auto bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Back Button */}
-          <button
-            onClick={() => setSelectedForum(null)}
-            className="flex items-center font-bold text-blue-600 hover:text-blue-700 mb-6 transition-colors cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Forums
-          </button>
-
-          {/* Forum Header */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
-                <div className="flex items-center mb-2">
-                  <h1 className="text-2xl font-bold text-gray-900 mr-3">
-                    {selectedForum.title}
-                  </h1>
-                </div>
-                <p className="text-gray-600 mb-4">
-                  {selectedForum.description}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ForumDetails
+        forum={selectedForum}
+        onBack={() => setSelectedForum(null)}
+      />
     );
   }
 

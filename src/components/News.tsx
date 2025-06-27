@@ -3,6 +3,7 @@
 
 import React from "react";
 import Image from "next/image";
+import SectionHeader from "./SectionHeader";
 
 interface NewsItem {
   id: string;
@@ -70,15 +71,7 @@ const NewsComponent: React.FC<NewsComponentProps> = ({
       <div className="mx-auto max-w-7xl">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <header className="text-center mb-8 lg:mb-12">
-            <h2
-              id="video-section-title"
-              className="text-xl sm:text-2xl lg:text-4xl font-bold text-blue-600/80 mb-4"
-            >
-              Latest News & Updates
-            </h2>
-            <div className="w-20 h-1 bg-blue-600/80 mx-auto rounded-full"></div>
-          </header>
+          <SectionHeader title="Latest News & Updates" />
           <button
             onClick={onViewAll}
             className="inline-flex items-center px-8 py-3 transition-all duration-300 bg-orange-400 border-orange-400 hover:bg-orange-500 hover:text-white hover:shadow-orange-400/25 focus:outline-none focus:ring-4 focus:ring-orange-400/50 focus:bg-orange-400 focus:text-white active:scale-95 text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 backdrop-blur-sm"

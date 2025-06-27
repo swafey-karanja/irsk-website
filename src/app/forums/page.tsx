@@ -1,22 +1,24 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Hero from "@/components/Hero";
-import NewsComponent from "@/components/NewsComponent";
+import NewsComponent, { Forum } from "@/components/NewsComponent";
+import ForumDetails from "@/components/ForumDetails";
 
-interface Forum {
-  id: number;
-  title: string;
-  description: string;
-  posts: number;
-  members: number;
-  lastPost: string;
-  moderator: string;
-  date: string;
-  image: string;
-}
+// interface Forum {
+//   id: number;
+//   title: string;
+//   description: string;
+//   posts: number;
+//   members: number;
+//   lastPost: string;
+//   moderator: string;
+//   date: string;
+//   image: string;
+// }
 
 const ForumsPage = () => {
+  const [selectedForum, setSelectedForum] = useState<Forum | null>(null);
   // Sample forum data for a government institution
   const forumsData: Forum[] = [
     {
@@ -101,29 +103,56 @@ const ForumsPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Hero
-        imageSrc="/images/image-1.jpg"
-        heightClass="h-[45vh]"
-        showContent={false}
-        customTitle={
-          <>
-            <span className="text-blue-400/80 font-bold">Forums</span>
-            <br />
-            <span className="text-white">Building diplomatic bridges</span>
-          </>
-        }
-      />
-
-      <NewsComponent
-        forumsData={forumsData}
-        heroImageSrc="/images/image-1.jpg"
-        heroTitle={<span className="text-blue-400/80 font-bold">Forums</span>}
-        heroSubtitle={
-          <span className="text-white">Building diplomatic bridges</span>
-        }
-        emptyStateTitle="No forums found"
-        emptyStateDescription="Try adjusting your search terms."
-      />
+      {selectedForum ? (
+        <>
+          <Hero
+            imageSrc="/images/image-1.jpg"
+            heightClass="h-[45vh]"
+            showContent={false}
+            customTitle={
+              <>
+                <span className="text-blue-400/80 font-bold">
+                  {selectedForum.title}
+                </span>
+                <br />
+                <span className="text-white">{selectedForum.description}s</span>
+              </>
+            }
+          />
+          <ForumDetails
+            forum={selectedForum}
+            onBack={() => setSelectedForum(null)}
+          />
+        </>
+      ) : (
+        <>
+          <Hero
+            imageSrc="/images/image-1.jpg"
+            heightClass="h-[45vh]"
+            showContent={false}
+            customTitle={
+              <>
+                <span className="text-blue-400 font-semibold">IRSK Forums</span>
+              </>
+            }
+            customSubtitle="Building diplomatic bridges"
+          />
+          <NewsComponent
+            forumsData={forumsData}
+            selectedForum={selectedForum}
+            setSelectedForum={setSelectedForum}
+            heroImageSrc="/images/image-1.jpg"
+            // heroTitle={
+            //   <span className="text-blue-400/80 font-bold">Forums</span>
+            // }
+            // heroSubtitle={
+            //   <span className="text-white">Building diplomatic bridges</span>
+            // }
+            emptyStateTitle="No forums found"
+            emptyStateDescription="Try adjusting your search terms."
+          />
+        </>
+      )}
     </div>
   );
 };
